@@ -1,0 +1,11 @@
+version: '2'
+services:
+    signup-postgresql:
+        image: postgres:9.6.5
+        # volumes:
+        #     - ~/volumes/jhipster/SignUp/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=SignUp
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

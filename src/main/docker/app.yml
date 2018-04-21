@@ -1,0 +1,19 @@
+version: '2'
+services:
+    signup-app:
+        image: signup
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://signup-postgresql:5432/SignUp
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=signup-elasticsearch:9300
+        ports:
+            - 8080:8080
+    signup-postgresql:
+        extends:
+            file: postgresql.yml
+            service: signup-postgresql
+    signup-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: signup-elasticsearch
